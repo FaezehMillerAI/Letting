@@ -1,0 +1,78 @@
+/* LettingsPulse Exeter Custom Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0b1120;
+    color: #f1f5f9;
+}
+
+/* Phone Mockup Frame */
+.phone-mockup {
+    width: 380px;
+    height: 700px;
+    background: #0f172a;
+    border-radius: 46px;
+    border: 10px solid #1e293b;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 35px rgba(14, 165, 233, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.phone-notch {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 24px;
+    background: #1e293b;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+    z-index: 40;
+}
+
+/* WhatsApp Theme Chat Bubbles */
+.chat-bubble-received {
+    background-color: #1e293b;
+    color: #f8fafc;
+    border-top-left-radius: 4px;
+}
+
+.chat-bubble-sent {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    color: #ffffff;
+    border-top-right-radius: 4px;
+}
+
+/* Property Mini Card in Chat */
+.chat-property-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.chat-property-card:hover {
+    transform: translateY(-2px);
+    border-color: #38bdf8;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0b1120;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}
