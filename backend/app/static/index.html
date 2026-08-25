@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LettingsPulse Exeter — 24/7 AI Agent Suite for Student Lettings</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+
+    <!-- Top Navigation Bar -->
+    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-30 px-6 py-3.5 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 font-extrabold text-white text-xl">
+                LP
+            </div>
+            <div>
+                <div class="flex items-center space-x-2">
+                    <h1 class="text-lg font-bold text-white tracking-tight">LettingsPulse Exeter</h1>
+                    <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30">AI Agent Suite</span>
+                </div>
+                <p class="text-xs text-slate-400">Serving University of Exeter Student Lettings Agencies</p>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="hidden md:flex items-center space-x-1 bg-slate-800/80 p-1 rounded-xl border border-slate-700/60">
+            <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="px-4 py-1.5 rounded-lg text-sm font-medium text-white bg-sky-600 transition shadow-sm">
+                📱 WhatsApp Pitch Simulator
+            </button>
+            <button onclick="switchTab('dashboard')" id="tab-btn-dashboard" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition">
+                📊 Agency Dashboard
+            </button>
+            <button onclick="switchTab('properties')" id="tab-btn-properties" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition">
+                🏡 Exeter Properties
+            </button>
+            <button onclick="switchTab('viewings')" id="tab-btn-viewings" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition">
+                📅 Booked Viewings
+            </button>
+            <button onclick="switchTab('widget')" id="tab-btn-widget" class="px-4 py-1.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700/50 transition">
+                💻 Web Widget
+            </button>
+        </nav>
+
+        <!-- Current Agency Profile Tag -->
+        <div class="flex items-center space-x-3">
+            <div class="text-right hidden sm:block">
+                <p class="text-xs text-slate-400">Current Client Profile</p>
+                <p class="text-sm font-semibold text-sky-400">Students@Cardens (Longbrook St)</p>
+            </div>
+            <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" title="AI Agent Live & Connected"></div>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+        <!-- TAB 1: WHATSAPP PITCH SIMULATOR -->
+        <section id="tab-simulator" class="space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Pitch Instructions & Quick Test Prompts -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-sky-500/10 rounded-full blur-3xl"></div>
+                        <div class="flex items-center space-x-2 text-sky-400 font-semibold text-sm mb-2">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                            <span>Live Exeter Agency Demo</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white tracking-tight">Interactive WhatsApp Student Agent</h2>
+                        <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+                            This simulator mimics what an Exeter student experiences when messaging an agency on WhatsApp. Test the agent's instant group qualification, HMO filtering, and automated viewing scheduling.
+                        </p>
+
+                        <!-- Quick Test Buttons -->
+                        <div class="mt-6 space-y-2.5">
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Quick Pitch Prompts (Click to Test):</p>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="sendQuickPrompt('Hi, we are 5 students looking for a house near Streatham campus under £185pppw with bills included')" class="text-left text-xs bg-slate-800 hover:bg-slate-700 hover:border-sky-500 border border-slate-700 text-slate-200 px-3 py-2 rounded-xl transition">
+                                    🎓 "5-bed near Streatham under £185pppw bills inc"
+                                </button>
+                                <button onclick="sendQuickPrompt('Can we book a viewing for the Victoria Street house tomorrow afternoon?')" class="text-left text-xs bg-slate-800 hover:bg-slate-700 hover:border-sky-500 border border-slate-700 text-slate-200 px-3 py-2 rounded-xl transition">
+                                    📅 "Book viewing for Victoria St house"
+                                </button>
+                                <button onclick="sendQuickPrompt('We are 6 medics at St Lukes looking in Mount Pleasant with 3 bathrooms')" class="text-left text-xs bg-slate-800 hover:bg-slate-700 hover:border-sky-500 border border-slate-700 text-slate-200 px-3 py-2 rounded-xl transition">
+                                    🏥 "6 medics at St Luke's in Mount Pleasant"
+                                </button>
+                                <button onclick="sendQuickPrompt('Option 1 at 2:00 PM works. Lead name: Sarah Jenkins, email: sj412@exeter.ac.uk, phone: 07700900123')" class="text-left text-xs bg-emerald-950/60 hover:bg-emerald-900 border border-emerald-700/60 text-emerald-300 px-3 py-2 rounded-xl transition">
+                                    ✅ "Complete booking details & confirm slot"
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commercial Value Highlights Box -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+                            <div class="flex items-center space-x-2 text-sky-400 mb-1">
+                                <i data-lucide="clock" class="w-4 h-4"></i>
+                                <span class="text-xs font-semibold uppercase">Speed-to-Lead</span>
+                            </div>
+                            <p class="text-xl font-bold text-white">< 30 Seconds</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Captures leads before competitors reply</p>
+                        </div>
+                        <div class="bg-slate-900/60 border border-slate-800 p-4 rounded-xl">
+                            <div class="flex items-center space-x-2 text-emerald-400 mb-1">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i>
+                                <span class="text-xs font-semibold uppercase">Statutory Notice</span>
+                            </div>
+                            <p class="text-xl font-bold text-white">24h Safe Notice</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Protects current tenant privacy rights</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: High-Fidelity Phone Simulator Mockup -->
+                <div class="lg:col-span-6 flex justify-center">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+
+                        <!-- WhatsApp Header -->
+                        <div class="bg-slate-900 px-4 pt-8 pb-3 border-b border-slate-800 flex items-center justify-between z-20">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm shadow">
+                                    C
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-white leading-tight">Cardens Student Lettings</h3>
+                                    <div class="flex items-center space-x-1">
+                                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                        <span class="text-xs text-emerald-400 font-medium">LettingsPulse AI Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button onclick="resetConversation()" title="Restart Chat" class="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition">
+                                <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <!-- Chat Messages Window -->
+                        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3.5 bg-slate-950/90 text-sm">
+                            <!-- Messages injected dynamically via app.js -->
+                        </div>
+
+                        <!-- Chat Input Box -->
+                        <div class="p-3 bg-slate-900 border-t border-slate-800 flex items-center space-x-2 z-20">
+                            <input type="text" id="chat-input" placeholder="Type message as an Exeter student..." class="flex-1 bg-slate-800 text-white placeholder-slate-400 text-xs px-3.5 py-2.5 rounded-full border border-slate-700 focus:outline-none focus:border-sky-500" onkeydown="if(event.key==='Enter') sendChatMessage()">
+                            <button onclick="sendChatMessage()" class="w-9 h-9 rounded-full bg-sky-600 hover:bg-sky-500 text-white flex items-center justify-center shadow transition flex-shrink-0">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TAB 2: AGENCY DASHBOARD -->
+        <section id="tab-dashboard" class="hidden space-y-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl font-bold text-white tracking-tight">Agency Performance Dashboard</h2>
+                    <p class="text-sm text-slate-400">Live operational metrics and pipeline value for Students@Cardens</p>
+                </div>
+                <button onclick="loadDashboardStats()" class="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-medium text-slate-200 transition">
+                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                    <span>Refresh Stats</span>
+                </button>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider">Total Inquiries</span>
+                        <i data-lucide="message-square" class="w-5 h-5 text-sky-400"></i>
+                    </div>
+                    <p id="stat-total-inquiries" class="text-3xl font-extrabold text-white">--</p>
+                    <p class="text-xs text-emerald-400 mt-1 flex items-center">
+                        <i data-lucide="trending-up" class="w-3.5 h-3.5 mr-1"></i> 100% 24/7 Response Rate
+                    </p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider">Qualified Groups</span>
+                        <i data-lucide="users" class="w-5 h-5 text-indigo-400"></i>
+                    </div>
+                    <p id="stat-qualified-groups" class="text-3xl font-extrabold text-white">--</p>
+                    <p class="text-xs text-slate-400 mt-1">4–8 bed student groups filtered</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider">Booked Viewings</span>
+                        <i data-lucide="calendar" class="w-5 h-5 text-emerald-400"></i>
+                    </div>
+                    <p id="stat-booked-viewings" class="text-3xl font-extrabold text-white">--</p>
+                    <p class="text-xs text-emerald-400 mt-1">Direct to negotiator calendars</p>
+                </div>
+
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between text-slate-400 mb-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider">Pipeline Commission</span>
+                        <i data-lucide="pound-sterling" class="w-5 h-5 text-amber-400"></i>
+                    </div>
+                    <p id="stat-pipeline-commission" class="text-3xl font-extrabold text-amber-400">--</p>
+                    <p class="text-xs text-slate-400 mt-1">Estimated agency let fees</p>
+                </div>
+            </div>
+
+            <!-- Recent Inquiries & Activity Feed -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-4 flex items-center space-x-2">
+                    <i data-lucide="activity" class="w-4 h-4 text-sky-400"></i>
+                    <span>Real-time Inbound Activity</span>
+                </h3>
+                <div id="dashboard-activity-list" class="space-y-3 text-sm">
+                    <!-- Dynamic feed -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: PROPERTIES INVENTORY -->
+        <section id="tab-properties" class="hidden space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white tracking-tight">Exeter HMO Student Inventory</h2>
+                    <p class="text-sm text-slate-400">Active listings managed by the AI Agent for matching & viewings</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <select id="property-filter-bedrooms" onchange="filterProperties()" class="bg-slate-800 text-xs text-slate-200 border border-slate-700 rounded-lg px-3 py-2 focus:outline-none">
+                        <option value="">All Bedrooms</option>
+                        <option value="4">4 Bedrooms</option>
+                        <option value="5">5 Bedrooms</option>
+                        <option value="6">6 Bedrooms</option>
+                        <option value="7">7 Bedrooms</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Property Cards Grid -->
+            <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected dynamically via app.js -->
+            </div>
+        </section>
+
+        <!-- TAB 4: BOOKED VIEWINGS -->
+        <section id="tab-viewings" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Scheduled Student Viewings</h2>
+                <p class="text-sm text-slate-400">Confirmed group viewings automatically booked into the agency calendar</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-300">
+                        <thead class="bg-slate-800/80 text-xs uppercase font-semibold text-slate-400 border-b border-slate-700">
+                            <tr>
+                                <th class="px-6 py-4">Property</th>
+                                <th class="px-6 py-4">Lead Student</th>
+                                <th class="px-6 py-4">Group Size</th>
+                                <th class="px-6 py-4">Scheduled Date & Time</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="viewings-table-body" class="divide-y divide-slate-800">
+                            <!-- Injected dynamically via app.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: WEB WIDGET SCRIPT -->
+        <section id="tab-widget" class="hidden space-y-6">
+            <div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">Embeddable Agency Web Widget</h2>
+                <p class="text-sm text-slate-400">Copy-paste this one-line script tag to activate LettingsPulse on any Exeter agency website</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                    <span class="text-xs font-semibold text-sky-400 uppercase tracking-wider">HTML Embed Code:</span>
+                    <button onclick="copyWidgetCode()" id="copy-btn" class="px-3 py-1.5 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-medium transition flex items-center space-x-1">
+                        <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                        <span>Copy Snippet</span>
+                    </button>
+                </div>
+                <pre class="bg-slate-950 p-4 rounded-xl text-slate-300 text-xs font-mono border border-slate-800 overflow-x-auto"><code>&lt;!-- LettingsPulse Exeter 24/7 AI Lettings Widget --&gt;
+&lt;script 
+  src="http://localhost:8000/static/widget.js" 
+  data-agency-slug="cardens-exeter"
+  data-primary-color="#0284c7"
+  defer&gt;
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-900/50 py-4 px-6 text-center text-xs text-slate-500">
+        LettingsPulse Exeter © 2026. Built for University of Exeter Student Accommodation Providers & HMO Agencies.
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="/static/app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
